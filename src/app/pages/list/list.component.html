@@ -39,7 +39,9 @@
     (changeText)="emitTextChange($event)"
     (deleteItem)="deleteItemOfList($event)"
   />
-  } @if (listItemsStage('completed').length) {
+  } 
+  
+  @if (listItemsStage('completed').length) {
   <h2>Completed</h2>
   <app-input-list-item
     [inputListItems]="listItemsStage('completed')"

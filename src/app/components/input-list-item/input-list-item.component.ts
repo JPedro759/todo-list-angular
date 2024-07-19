@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, output, Output } from '@angular/core';
 import { IListItems } from '../../interfaces/IListItems';
 
 @Component({
@@ -9,25 +9,21 @@ import { IListItems } from '../../interfaces/IListItems';
   styleUrl: './input-list-item.component.scss',
 })
 export class InputListItemComponent {
-  @Input({ required: true })
-  inputListItems: IListItems[] = [];
+  inputListItems = input.required<IListItems[]>()
 
-  @Output()
-  changeCheckbox = new EventEmitter<{ id: string; checked: boolean }>();
+  changeCheckbox = output<{ id: string; checked: boolean }>()
 
   emitCheckboxChange(id: string, checked: boolean) {
     return this.changeCheckbox.emit({ id, checked });
   }
 
-  @Output()
-  changeText = new EventEmitter<{ id: string; value: string }>();
+  changeText = output<{ id: string; value: string }>();
 
   emitTextChange(id: string, value: string) {
     return this.changeText.emit({ id, value });
   }
 
-  @Output()
-  deleteItem = new EventEmitter<string>();
+  deleteItem = output<string>();
 
   deleteItemOfList(id: string) {
     return this.deleteItem.emit(id);

@@ -4,10 +4,9 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  EventEmitter,
   inject,
-  Input,
-  Output,
+  input,
+  output,
   ViewChild,
 } from '@angular/core';
 
@@ -24,11 +23,9 @@ export class InputAddItemComponent {
   @ViewChild('inputText')
   inputText!: ElementRef;
 
-  @Input({ required: true })
-  inputListItems: IListItems[] = [];
+  inputListItems = input.required<IListItems[]>();
 
-  @Output()
-  outputAddListItem = new EventEmitter<IListItems>();
+  outputAddListItem = output<IListItems>();
 
   focusAndAddItem(value: string) {
     if (value) {
